@@ -1,0 +1,36 @@
+name: example
+description: An example project for the basil dart tool.
+version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.17.5 <3.0.0'
+
+# dependencies:
+#   path: ^1.8.0
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.16.0
+  basil:
+    path: ../
+
+# Example basil configuration to format, compile, execute, and clean up a dart project and its
+# executables. Supports Windows, Linux, and MacOS.
+basil:
+  format:
+    cmds: [ 'dart format .' ]
+  build:
+    cmds: [ 'dart compile exe bin/example.dart' ]
+  test_and_cleanup_unix:
+    platforms: [ 'linux', 'macos' ]
+    cmds: [
+      './bin/example.exe',
+      'rm bin/example.exe'
+    ]
+  test_and_cleanup_windows:
+    platforms: [ 'windows' ]
+    cmds: [
+        'bin/example.exe',
+        'del bin/example.exe'
+    ]
