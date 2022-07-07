@@ -19,8 +19,7 @@ default. Build types can be also specified manually.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Simply add basil to your developer dependencies for your project: `dart pub add --dev basil`.
 
 ## Configuration
 
