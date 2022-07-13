@@ -4,6 +4,7 @@ import 'package:ansicolor/ansicolor.dart';
 import 'package:logging/logging.dart';
 
 class Output {
+  /// Current log [Level] for the logger.
   static const logLevel = Level.INFO;
 
   static final _penSevere = AnsiPen()..red(bg: true, bold: true);

@@ -1,3 +1,7 @@
+## 1.0.2
+
+* Slightly improve documentation.
+
 ## 1.0.1
 
 * Add dart pub add instructions

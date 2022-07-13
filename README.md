@@ -48,7 +48,7 @@ basil:
 
 ## Usage
 
-Once configured, you can start a build via: `dart run basil:main`. This will process all of the 
+Once configured, you can start a build via: `dart run basil:main`. This will process all the 
 build steps in descending order.
 
 Build steps can also be specified individually: `dart run basil:main [type...]`. For example: 
