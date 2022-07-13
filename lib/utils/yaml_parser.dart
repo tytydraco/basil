@@ -6,20 +6,25 @@ import 'package:yaml/yaml.dart';
 /// A class to handle the parsing and checking of `pubspec.yaml`.
 class YamlParser {
   /// Location of the project main pubspec.yaml file.
-  static final pubspecYamlFile = File('pubspec.yaml');
+  final String pubspecYamlFilePath;
+
+  YamlParser({
+    this.pubspecYamlFilePath = 'pubspec.yaml',
+  });
 
   final _log = Logger((YamlParser).toString());
+  late final _pubspecYamlFile = File(pubspecYamlFilePath);
 
-  /// Exit if [pubspecYamlFile] is missing.
+  /// Exit if [_pubspecYamlFile] is missing.
   Future<void> _assertPubspecExists() async {
     _log.finer('Checking if pubspec.yaml file exists');
-    if (!await pubspecYamlFile.exists()) {
+    if (!await _pubspecYamlFile.exists()) {
       _log.severe('Cannot locate pubspec.yaml file');
       exit(1);
     }
   }
 
-  /// Exit if [pubspecYamlFile] is missing core basil fields.
+  /// Exit if [yamlMap] is missing core basil fields.
   Future<void> _assertPubspecYamlBasilValid(YamlMap yamlMap) async {
     _log.finer('Checking if YamlMap contains invalid basil fields');
 
@@ -83,19 +88,19 @@ class YamlParser {
     }
   }
 
-  /// Return the contents of [pubspecYamlFile] as a string.
+  /// Return the contents of [_pubspecYamlFile] as a string.
   Future<String> _getPubspecYamlString() async {
     await _assertPubspecExists();
-    return await pubspecYamlFile.readAsString();
+    return await _pubspecYamlFile.readAsString();
   }
 
-  /// Return the contents of [pubspecYamlFile] as a [YamlMap].
+  /// Return the contents of [_pubspecYamlFile] as a [YamlMap].
   Future<YamlMap> _getPubspecYamlMap() async {
     final pubspecYamlString = await _getPubspecYamlString();
     return loadYaml(pubspecYamlString);
   }
 
-  /// Return the contents of [pubspecYamlFile] as a [YamlMap]. Check to make
+  /// Return the contents of [_pubspecYamlFile] as a [YamlMap]. Check to make
   /// sure that it contains the necessary basil fields.
   Future<YamlMap> getBasilYamlMap() async {
     final yamlMap = await _getPubspecYamlMap();

@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Add unit testing.
+
 ## 1.0.2
 
 * Slightly improve documentation.
