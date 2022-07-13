@@ -8,7 +8,8 @@ void main() {
     final yamlParser = YamlParser(pubspecYamlFilePath: testFileLocation);
     final yamlMap = await yamlParser.getBasilYamlMap();
 
-    expect(yamlMap.toString(),
+    expect(
+        yamlMap.toString(),
         '{ex1: {cmds: [echo 1, echo 2, echo 3]}, '
         'ex2: {cmds: [echo 4, echo 5, echo 6]}}');
   });

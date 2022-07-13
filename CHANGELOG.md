@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Format files.
+
 ## 1.0.3
 
 * Add unit testing.

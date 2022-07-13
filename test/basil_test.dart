@@ -4,8 +4,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('Basil builds', () {
-    final yamlParser = YamlParser(
-        pubspecYamlFilePath: 'test/basil_test_pubspec.yaml');
+    final yamlParser =
+        YamlParser(pubspecYamlFilePath: 'test/basil_test_pubspec.yaml');
 
     test('Build all', () async {
       final yamlMap = await yamlParser.getBasilYamlMap();
