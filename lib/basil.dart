@@ -11,14 +11,14 @@ class Basil {
 
   final _log = Logger((Basil).toString());
 
-  /// Run all build types in descending order from the pubspec.yaml file.
+  /// Run all build types in descending order from the YAML file.
   Future<void> buildAll() async {
     for (String buildType in yamlMap.keys) {
       await _runBuildType(yamlMap, buildType);
     }
   }
 
-  /// Run some particular [buildType]s from the pubspec.yaml file.
+  /// Run some particular [buildType]s from the YAML file.
   Future<void> buildOnly(List<String> buildTypes) async {
     for (String buildType in buildTypes) {
       await _runBuildType(yamlMap, buildType);
@@ -30,8 +30,7 @@ class Basil {
     final buildTypeMap = yamlMap[buildType];
 
     if (buildTypeMap == null) {
-      _log.severe('Build type does not exist: $buildType');
-      exit(1);
+      throw ArgumentError('Build type does not exist', buildType);
     }
 
     final cmds = (buildTypeMap['cmds'] as YamlList)

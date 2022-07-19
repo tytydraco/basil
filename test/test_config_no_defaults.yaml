@@ -1,0 +1,6 @@
+basil:
+  ex1:
+    platforms: [ 'windows' ]
+    enabled: false
+    parallel: true
+    cmds: [ ]

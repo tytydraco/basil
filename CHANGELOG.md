@@ -1,3 +1,10 @@
+## 1.0.5
+
+* Add testing
+* Clean up and improve parser
+* Fix typos
+* Fix README example
+
 ## 1.0.4
 
 * Format files.

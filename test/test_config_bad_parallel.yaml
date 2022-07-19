@@ -1,0 +1,4 @@
+basil:
+  ex1:
+    parallel: 1
+    cmds: [ ]

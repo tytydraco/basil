@@ -1,0 +1,4 @@
+basil:
+  ex1:
+    enabled: 1
+    cmds: [ ]
