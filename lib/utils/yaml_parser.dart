@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:logging/logging.dart';
 import 'package:yaml/yaml.dart';
 
 /// A class to handle the parsing and checking of [yamlFilePath].
@@ -12,12 +11,10 @@ class YamlParser {
     this.yamlFilePath = 'pubspec.yaml',
   });
 
-  final _log = Logger((YamlParser).toString());
   late final _yamlFile = File(yamlFilePath);
 
   /// Throws an [ArgumentError] if it [_yamlFile] is missing.
   Future<void> _assertYamlFileExists() async {
-    _log.finer('Checking if YAML file exists');
     if (!await _yamlFile.exists()) {
       throw ArgumentError('YAML file does not exist at path', yamlFilePath);
     }
@@ -25,8 +22,6 @@ class YamlParser {
 
   /// Throws an [ArgumentError] if it [yamlMap] is missing core fields.
   Future<void> _assertYamlBasilValid(YamlMap? yamlMap) async {
-    _log.finer('Checking if YamlMap contains invalid basil fields');
-
     // Check contents
     if (yamlMap == null) {
       throw ArgumentError('Invalid YAML file', yamlFilePath);

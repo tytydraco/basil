@@ -59,10 +59,8 @@ class Basil {
   Future<void> _runCommands(List<String> commands,
       {bool parallel = false}) async {
     if (parallel) {
-      Log.debug('Executing in parallel');
       await Future.wait(commands.map((command) => Shell().run(command)));
     } else {
-      Log.debug('Executing in sequence');
       final shell = Shell();
       for (String command in commands) {
         await shell.run(command);
