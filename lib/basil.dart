@@ -14,8 +14,8 @@ class Basil {
 
   /// Run all build types in descending order from the YAML file.
   Future<void> buildAll() async {
-    for (final buildType in yamlMap.keys as Iterable<String>) {
-      await _runBuildType(yamlMap, buildType);
+    for (final buildType in yamlMap.keys) {
+      await _runBuildType(yamlMap, buildType as String);
     }
   }
 

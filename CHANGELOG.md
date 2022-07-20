@@ -1,3 +1,7 @@
+## 1.0.9
+
+* Fix another bad cast
+
 ## 1.0.8
 
 * Fix bad cast
