@@ -19,7 +19,7 @@ class YamlParser {
   Future<void> _assertYamlFileExists() async {
     _log.finer('Checking if YAML file exists');
     if (!await _yamlFile.exists()) {
-      throw ArgumentError('YAML file does not exist at path', 'yamlFilePath');
+      throw ArgumentError('YAML file does not exist at path', yamlFilePath);
     }
   }
 
@@ -29,7 +29,7 @@ class YamlParser {
 
     // Check contents
     if (yamlMap == null) {
-      throw ArgumentError('Invalid YAML file', 'yamlFilePath');
+      throw ArgumentError('Invalid YAML file', yamlFilePath);
     }
 
     // Check top-level declaration of basil

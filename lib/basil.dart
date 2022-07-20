@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:logging/logging.dart';
+import 'package:basil/utils/log.dart';
 import 'package:process_run/shell.dart';
 import 'package:yaml/yaml.dart';
 
@@ -8,8 +8,6 @@ class Basil {
   final YamlMap yamlMap;
 
   Basil(this.yamlMap);
-
-  final _log = Logger((Basil).toString());
 
   /// Run all build types in descending order from the YAML file.
   Future<void> buildAll() async {
@@ -49,7 +47,7 @@ class Basil {
     // - Build type is enabled
     // - Executing on a supported platform
     if (enabled && onSupportedPlatform) {
-      _log.info('Running steps for build type: $buildType');
+      Log.log('Running steps for build type: $buildType');
       await _runCommands(cmds, parallel: parallel);
     }
   }
@@ -61,10 +59,10 @@ class Basil {
   Future<void> _runCommands(List<String> commands,
       {bool parallel = false}) async {
     if (parallel) {
-      _log.finest('Executing in parallel');
+      Log.debug('Executing in parallel');
       await Future.wait(commands.map((command) => Shell().run(command)));
     } else {
-      _log.finest('Executing in sequence');
+      Log.debug('Executing in sequence');
       final shell = Shell();
       for (String command in commands) {
         await shell.run(command);

@@ -1,6 +1,6 @@
 name: basil
 description: A linear build system for Dart projects, designed to be lightweight and extensible.
-version: 1.0.5
+version: 1.0.6
 repository: https://www.github.com/tytydraco/basil
 
 environment:
@@ -8,8 +8,8 @@ environment:
 
 dependencies:
   ansicolor: ^2.0.1
+  args: ^2.3.1
   async: ^2.9.0
-  logging: ^1.0.2
   process_run: ^0.12.3+2
   yaml: ^3.1.1
 

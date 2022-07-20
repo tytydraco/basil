@@ -12,10 +12,10 @@ A linear build system for Dart projects, designed to be lightweight and extensib
 
 ## Details
 
-Basil parses the project `pubspec.yaml` file and looks for a top-level field named `basil`. Other 
-fields under the `basil` tag are called build types. Each build type must specify a field named 
-`cmds` containing a list of shell commands. Build types are executed in descending order, by 
-default. Build types can be also specified manually.
+Basil parses a YAML file (by default, the project `pubspec.yaml` file) and looks for a top-level field named `basil`.
+Other fields under the `basil` tag are called build types. Each build type must specify a field named `cmds` containing
+a list of shell commands. Build types are executed in descending order, by default. Build types can be also specified
+manually.
 
 ## Getting started
 
@@ -48,9 +48,11 @@ basil:
 
 ## Usage
 
-Once configured, you can start a build via: `dart run basil:main`. This will process all the 
-build steps in descending order.
+Once configured, you can start a build via: `dart run basil:main`. This will process all the build steps in descending
+order.
 
-Build steps can also be specified individually: `dart run basil:main [type...]`. For example: 
-`dart run basil:main build cleanup` will execute exclusively the `build` step and the `cleanup` 
-step.
+A specific configuration file can be specified using the `--config` or `-c` option. For
+example: `dart run basil:main -c custom.yaml`.
+
+Build steps can also be specified individually: `dart run basil:main [type...]`. For
+example: `dart run basil:main build cleanup` will execute exclusively the `build` step and the `cleanup` step.

@@ -1,3 +1,9 @@
+## 1.0.6
+
+* Add command line arguments
+* Catch exceptions and report, don't let them go unhandled
+* Swap to internal logging class
+
 ## 1.0.5
 
 * Add testing
