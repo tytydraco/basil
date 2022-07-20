@@ -44,11 +44,14 @@ class YamlParser {
     }
 
     // Check individual build type fields
-    for (final buildType in yamlMapBasil.keys as Iterable<String>) {
+    for (final buildType in yamlMapBasil.keys) {
       final yamlBuildType = yamlMapBasil[buildType];
 
       if (yamlBuildType is! YamlMap) {
-        throw ArgumentError('Field is not of type YamlMap', buildType);
+        throw ArgumentError(
+          'Field is not of type YamlMap',
+          buildType.toString(),
+        );
       }
 
       if (yamlBuildType['cmds'] == null) {
