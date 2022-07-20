@@ -9,9 +9,12 @@ void main() {
     final yamlMap = await yamlParser.getBasilYamlMap();
 
     expect(
-        yamlMap.toString(),
-        equals('{ex1: {platforms: [windows], enabled: false, '
-            'parallel: true, cmds: []}}'));
+      yamlMap.toString(),
+      equals(
+        '{ex1: {platforms: [windows], enabled: false, '
+        'parallel: true, cmds: []}}',
+      ),
+    );
   });
 
   test('All defaults', () async {

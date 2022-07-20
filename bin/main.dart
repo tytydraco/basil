@@ -29,7 +29,7 @@ Future<void> main(List<String> args) async {
 
   final results = argParser.parse(args);
   final buildTypes = results.rest;
-  final configFilePath = results['config'];
+  final configFilePath = results['config'] as String;
 
   final yamlParser = YamlParser(yamlFilePath: configFilePath);
   try {

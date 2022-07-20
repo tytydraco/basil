@@ -1,3 +1,7 @@
+## 1.0.7
+
+* Follow Very Good Analysis guidelines
+
 ## 1.0.6
 
 * Add command line arguments
