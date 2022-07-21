@@ -10,10 +10,8 @@ void main() {
 
     expect(
       yamlMap.toString(),
-      equals(
-        '{ex1: {platforms: [windows], enabled: false, '
-        'parallel: true, cmds: []}}',
-      ),
+      '{ex1: {platforms: [windows], enabled: false, '
+      'parallel: true, cmds: []}}',
     );
   });
 
