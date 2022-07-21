@@ -27,12 +27,13 @@ Future<void> main(List<String> args) async {
       defaultsTo: 'pubspec.yaml',
     );
 
-  final results = argParser.parse(args);
-  final buildTypes = results.rest;
-  final configFilePath = results['config'] as String;
-
-  final yamlParser = YamlParser(yamlFilePath: configFilePath);
   try {
+    final results = argParser.parse(args);
+    final buildTypes = results.rest;
+    final configFilePath = results['config'] as String;
+
+    final yamlParser = YamlParser(yamlFilePath: configFilePath);
+
     final yamlMap = await yamlParser.getBasilYamlMap();
     final basil = Basil(yamlMap);
 

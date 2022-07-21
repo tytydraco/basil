@@ -1,3 +1,7 @@
+## 1.0.10
+
+* Also catch parser errors
+
 ## 1.0.9
 
 * Fix another bad cast
