@@ -1,3 +1,8 @@
+## 1.0.12
+
+* Use built-in shell execution
+* Add better stdout and stderr handling
+
 ## 1.0.11
 
 * Use positional parameters when appropriate

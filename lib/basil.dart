@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:basil/utils/logging.dart';
-import 'package:process_run/shell.dart';
+import 'package:io/io.dart';
 import 'package:yaml/yaml.dart';
 
 /// A linear build system using YAML configuration.
@@ -55,20 +55,35 @@ class Basil {
     }
   }
 
+  /// Execute a shell [command] and log the output.
+  Future<void> _runCommand(String command) async {
+    final shellParts = shellSplit(command);
+    final executable = shellParts[0];
+    final arguments = shellParts.sublist(1);
+
+    final process = await Process.run(
+      executable,
+      arguments,
+      runInShell: true,
+    );
+
+    final trimmedStdout = (process.stdout as String).trim();
+    final trimmedStderr = (process.stderr as String).trim();
+
+    if (trimmedStdout.isNotEmpty) logStdout(trimmedStdout);
+    if (trimmedStderr.isNotEmpty) logStderr(trimmedStderr);
+  }
+
   /// Execute the [commands] sequentially or in [parallel] if specified.
-  ///
-  /// New [Shell] instances will be created for each command if [parallel] mode
-  /// is enabled.
   Future<void> _runCommands(
     List<String> commands, {
     bool parallel = false,
   }) async {
     if (parallel) {
-      await Future.wait(commands.map((command) => Shell().run(command)));
+      await Future.wait(commands.map(_runCommand));
     } else {
-      final shell = Shell();
       for (final command in commands) {
-        await shell.run(command);
+        await _runCommand(command);
       }
     }
   }
