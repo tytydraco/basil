@@ -3,6 +3,7 @@
 * Use positional parameters when appropriate
 * Drop logging class down to global methods
 * Make basil a global executable
+* Update README
 
 ## 1.0.10
 
