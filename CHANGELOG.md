@@ -1,3 +1,7 @@
+## 1.0.11
+
+* Use positional parameters when appropriate
+
 ## 1.0.10
 
 * Also catch parser errors

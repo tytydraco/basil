@@ -5,9 +5,9 @@ import 'package:yaml/yaml.dart';
 /// A class to handle the parsing and checking of [yamlFilePath].
 class YamlParser {
   /// Create a new [YamlParser] given a [yamlFilePath].
-  YamlParser({
+  YamlParser([
     this.yamlFilePath = 'pubspec.yaml',
-  });
+  ]);
 
   /// Location of the YAML file.
   final String yamlFilePath;

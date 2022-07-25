@@ -32,7 +32,7 @@ Future<void> main(List<String> args) async {
     final buildTypes = results.rest;
     final configFilePath = results['config'] as String;
 
-    final yamlParser = YamlParser(yamlFilePath: configFilePath);
+    final yamlParser = YamlParser(configFilePath);
 
     final yamlMap = await yamlParser.getBasilYamlMap();
     final basil = Basil(yamlMap);
