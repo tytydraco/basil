@@ -1,6 +1,7 @@
 ## 1.0.11
 
 * Use positional parameters when appropriate
+* Drop logging class down to global methods
 
 ## 1.0.10
 

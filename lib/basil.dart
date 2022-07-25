@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:basil/utils/log.dart';
+import 'package:basil/utils/logging.dart';
 import 'package:process_run/shell.dart';
 import 'package:yaml/yaml.dart';
 
@@ -50,7 +50,7 @@ class Basil {
     // - Build type is enabled
     // - Executing on a supported platform
     if (enabled && onSupportedPlatform) {
-      Log.log('Running steps for build type: $buildType');
+      log('Running steps for build type: $buildType');
       await _runCommands(cmds, parallel: parallel);
     }
   }
