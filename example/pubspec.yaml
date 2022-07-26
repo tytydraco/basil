@@ -31,6 +31,6 @@ basil:
   test_and_cleanup_windows:
     platforms: [ 'windows' ]
     cmds: [
-        'bin/example.exe',
-        'del bin/example.exe'
+      'bin/example.exe',
+      'del bin/example.exe'
     ]

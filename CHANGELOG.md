@@ -1,3 +1,11 @@
+## 1.0.13
+
+* Pipe stdio by default
+* Bail on error by default
+* Add flag to pipe stdio
+* Add flag to bail on error
+* Add flag to echo commands
+
 ## 1.0.12
 
 * Use built-in shell execution

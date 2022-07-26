@@ -25,17 +25,43 @@ Future<void> main(List<String> args) async {
       help: 'The path to the configuration file to process.',
       abbr: 'c',
       defaultsTo: 'pubspec.yaml',
+    )
+    ..addFlag(
+      'echo',
+      help: 'Log all commands before executing them.',
+      abbr: 'e',
+    )
+    ..addFlag(
+      'bail',
+      help: 'End all execution if a non-zero exit code was returned.',
+      abbr: 'b',
+      defaultsTo: true,
+    )
+    ..addFlag(
+      'pipe-stdio',
+      help: 'Attach stdin, stdout, and stderr to each subprocess.',
+      abbr: 'p',
+      defaultsTo: true,
     );
 
   try {
     final results = argParser.parse(args);
     final buildTypes = results.rest;
+
     final configFilePath = results['config'] as String;
+    final echo = results['echo'] as bool;
+    final bailOnError = results['bail'] as bool;
+    final pipeStdio = results['pipe-stdio'] as bool;
 
     final yamlParser = YamlParser(configFilePath);
 
     final yamlMap = await yamlParser.getBasilYamlMap();
-    final basil = Basil(yamlMap);
+    final basil = Basil(
+      yamlMap,
+      echo: echo,
+      bailOnError: bailOnError,
+      pipeStdio: pipeStdio,
+    );
 
     if (buildTypes.isEmpty) {
       await basil.buildAll();

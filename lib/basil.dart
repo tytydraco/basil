@@ -7,10 +7,24 @@ import 'package:yaml/yaml.dart';
 /// A linear build system using YAML configuration.
 class Basil {
   /// Create a new [Basil] object given a [yamlMap].
-  Basil(this.yamlMap);
+  Basil(
+    this.yamlMap, {
+    this.echo = false,
+    this.bailOnError = false,
+    this.pipeStdio = true,
+  });
 
   /// The configuration YAML to use.
   final YamlMap yamlMap;
+
+  /// Log all commands before executing them.
+  final bool echo;
+
+  /// End all execution if a non-zero exit code was returned.
+  final bool bailOnError;
+
+  /// Attach stdin, stdout, and stderr to each subprocess.
+  final bool pipeStdio;
 
   /// Run all build types in descending order from the YAML file.
   Future<void> buildAll() async {
@@ -57,6 +71,9 @@ class Basil {
 
   /// Execute a shell [command] and log the output.
   Future<void> _runCommand(String command) async {
+    // Echo command to output first.
+    if (echo) echoCommand(command);
+
     final shellParts = shellSplit(command);
     final executable = shellParts[0];
     final arguments = shellParts.sublist(1);
@@ -65,10 +82,15 @@ class Basil {
       executable,
       arguments,
       runInShell: true,
-      mode: ProcessStartMode.inheritStdio,
+      mode: pipeStdio ? ProcessStartMode.inheritStdio : ProcessStartMode.normal,
     );
 
-    await process.exitCode;
+    final errorCode = await process.exitCode;
+
+    // Bail if something went wrong.
+    if (bailOnError && errorCode != 0) {
+      throw OSError('Exit code is not zero, bailing', errorCode);
+    }
   }
 
   /// Execute the [commands] sequentially or in [parallel] if specified.
