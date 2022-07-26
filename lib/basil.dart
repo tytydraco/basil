@@ -61,17 +61,14 @@ class Basil {
     final executable = shellParts[0];
     final arguments = shellParts.sublist(1);
 
-    final process = await Process.run(
+    final process = await Process.start(
       executable,
       arguments,
       runInShell: true,
+      mode: ProcessStartMode.inheritStdio,
     );
 
-    final trimmedStdout = (process.stdout as String).trim();
-    final trimmedStderr = (process.stderr as String).trim();
-
-    if (trimmedStdout.isNotEmpty) logStdout(trimmedStdout);
-    if (trimmedStderr.isNotEmpty) logStderr(trimmedStderr);
+    await process.exitCode;
   }
 
   /// Execute the [commands] sequentially or in [parallel] if specified.
