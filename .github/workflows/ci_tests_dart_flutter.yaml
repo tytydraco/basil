@@ -1,0 +1,38 @@
+name: CI Tests (Dart & Flutter)
+
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Get project type
+        id: project-type
+        run: |
+          if [[ ! -f pubspec.lock ]]; then
+            echo "pubspec.lock not found!"
+            exit 1
+          fi
+          
+          if grep -q 'flutter: "' pubspec.lock; then
+            echo "::set-output name=type::flutter"
+          elif grep -q 'dart: "' pubspec.lock; then
+            echo "::set-output name=type::dart"
+          else
+            echo "Project not compatible!"
+            exit 1
+          fi
+
+      - name: Flutter CI tests
+        if: ${{ steps.project-type.outputs.type == 'flutter' }}
+        uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+
+      - name: Dart CI tests
+        if: ${{ steps.project-type.outputs.type == 'dart' }}
+        uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/dart.yml@v1
