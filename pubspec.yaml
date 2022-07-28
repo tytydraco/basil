@@ -20,3 +20,13 @@ dev_dependencies:
 
 executables:
   basil: main
+
+basil:
+  formatting:
+    cmds: [ 'dart format -o none --set-exit-if-changed .' ]
+  analysis:
+    cmds: [ 'dart analyze --fatal-infos' ]
+  tests:
+    cmds: [ 'dart test' ]
+  example:
+    cmds: [ 'bash -c "cd example/ && dart run basil:main"' ]
