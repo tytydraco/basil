@@ -3,6 +3,7 @@
 * Use yamlcfg under the hood
 * Add basic tests
 * Detect non-string build types (null, ints, etc.)
+* Test basil project via basil build system
 
 ## 1.0.13
 
