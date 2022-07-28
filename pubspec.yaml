@@ -12,6 +12,7 @@ dependencies:
   async: ^2.9.0
   io: ^1.0.3
   yaml: ^3.1.1
+  yamlcfg: ^1.0.1
 
 dev_dependencies:
   test: ^1.21.4

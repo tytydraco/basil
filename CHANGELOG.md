@@ -1,3 +1,9 @@
+## 1.1.0
+
+* Use yamlcfg under the hood
+* Add basic tests
+* Detect non-string build types (null, ints, etc.)
+
 ## 1.0.13
 
 * Pipe stdio by default

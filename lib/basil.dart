@@ -3,19 +3,20 @@ import 'dart:io';
 import 'package:basil/utils/logging.dart';
 import 'package:io/io.dart';
 import 'package:yaml/yaml.dart';
+import 'package:yamlcfg/yamlcfg.dart';
 
 /// A linear build system using YAML configuration.
 class Basil {
-  /// Create a new [Basil] object given a [yamlMap].
+  /// Create a new [Basil] object given a [yamlCfg].
   Basil(
-    this.yamlMap, {
+    this.yamlCfg, {
     this.echo = false,
     this.bailOnError = false,
     this.pipeStdio = true,
   });
 
-  /// The configuration YAML to use.
-  final YamlMap yamlMap;
+  /// The type-safe configuration [YamlCfg] to use.
+  final YamlCfg yamlCfg;
 
   /// Log all commands before executing them.
   final bool echo;
@@ -26,45 +27,47 @@ class Basil {
   /// Attach stdin, stdout, and stderr to each subprocess.
   final bool pipeStdio;
 
-  /// Run all build types in descending order from the YAML file.
-  Future<void> buildAll() async {
-    for (final buildType in yamlMap.keys) {
-      await _runBuildType(yamlMap, buildType as String);
+  /// The type-safe configuration [YamlCfg] of the basil field from the original
+  /// config.
+  ///
+  /// Throws an [ArgumentError] if the `basil` field is missing from the root.
+  late YamlCfg basilCfg = yamlCfg.into(
+    'basil',
+    () => throw ArgumentError('Missing basil field', 'yamlCfg'),
+  );
+
+  /// Run all build types in descending order from the configuration file.
+  Future<void> buildAll() => buildOnly(basilCfg.yamlMap.keys);
+
+  /// Run some particular build types from the configuration file.
+  Future<void> buildOnly(Iterable<Object?> buildTypeKeys) async {
+    for (final buildTypeKey in buildTypeKeys) {
+      final buildTypeCfg = basilCfg.into(
+        buildTypeKey,
+        () => throw ArgumentError(
+          'Build type does not exist',
+          buildTypeKey.toString(),
+        ),
+      );
+
+      log('Running steps for: $buildTypeKey');
+      await _runBuildType(buildTypeCfg);
     }
   }
 
-  /// Run some particular build types from the YAML file.
-  Future<void> buildOnly(List<String> buildTypes) async {
-    for (final buildType in buildTypes) {
-      await _runBuildType(yamlMap, buildType);
-    }
-  }
-
-  /// Run commands for a specific [buildType].
-  Future<void> _runBuildType(YamlMap yamlMap, String buildType) async {
-    final buildTypeMap = yamlMap[buildType] as YamlMap?;
-
-    if (buildTypeMap == null) {
-      throw ArgumentError('Build type does not exist', buildType);
-    }
-
-    final cmds = (buildTypeMap['cmds'] as YamlList)
-        .map((cmd) => cmd.toString())
-        .toList();
-    final enabled = buildTypeMap['enabled'] as bool? ?? true;
-    final parallel = buildTypeMap['parallel'] as bool? ?? false;
-    final platforms = (buildTypeMap['platforms'] as YamlList?)
-        ?.map((platform) => platform.toString())
-        .toList();
-
-    final onSupportedPlatform =
+  /// Run commands for a specific [buildTypeCfg].
+  Future<void> _runBuildType(YamlCfg buildTypeCfg) async {
+    final cmds = buildTypeCfg.get<YamlList>('cmds').map((e) => e.toString());
+    final enabled = buildTypeCfg.get<bool>('enabled', () => true);
+    final parallel = buildTypeCfg.get<bool>('parallel', () => false);
+    final platforms = buildTypeCfg.get<YamlList?>('platforms', () => null);
+    final platformSupported =
         platforms?.contains(Platform.operatingSystem) ?? true;
 
     // Proceed if:
     // - Build type is enabled
     // - Executing on a supported platform
-    if (enabled && onSupportedPlatform) {
-      log('Running steps for build type: $buildType');
+    if (enabled && platformSupported) {
       await _runCommands(cmds, parallel: parallel);
     }
   }
@@ -95,7 +98,7 @@ class Basil {
 
   /// Execute the [commands] sequentially or in [parallel] if specified.
   Future<void> _runCommands(
-    List<String> commands, {
+    Iterable<String> commands, {
     bool parallel = false,
   }) async {
     if (parallel) {

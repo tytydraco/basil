@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:args/args.dart';
 import 'package:basil/basil.dart';
 import 'package:basil/utils/logging.dart';
-import 'package:basil/utils/yaml_parser.dart';
+import 'package:yamlcfg/yamlcfg.dart';
 
 Future<void> main(List<String> args) async {
   final argParser = ArgParser();
@@ -53,11 +53,10 @@ Future<void> main(List<String> args) async {
     final bailOnError = results['bail'] as bool;
     final pipeStdio = results['pipe-stdio'] as bool;
 
-    final yamlParser = YamlParser(configFilePath);
+    final yamlCfg = YamlCfg.fromFile(File(configFilePath));
 
-    final yamlMap = await yamlParser.getBasilYamlMap();
     final basil = Basil(
-      yamlMap,
+      yamlCfg,
       echo: echo,
       bailOnError: bailOnError,
       pipeStdio: pipeStdio,
