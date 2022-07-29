@@ -1,3 +1,7 @@
+## 1.1.0+1
+
+* Re-run pub.dev analysis; broke
+
 ## 1.1.0
 
 * Use yamlcfg under the hood
