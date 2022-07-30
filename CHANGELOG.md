@@ -1,3 +1,8 @@
+## 1.1.0+2
+
+* Convert LICENSE to 2-Clause BSD
+* Update min dart SDK version
+
 ## 1.1.0+1
 
 * Re-run pub.dev analysis; broke
