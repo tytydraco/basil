@@ -5,6 +5,7 @@
         <entry key="_fe_analyzer_shared">
           <value>
             <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-43.0.0/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-41.0.0/lib" />
             </list>
           </value>
@@ -12,6 +13,7 @@
         <entry key="analyzer">
           <value>
             <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/analyzer-4.3.1/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/analyzer-4.2.0/lib" />
             </list>
           </value>
@@ -194,6 +196,7 @@
         <entry key="shelf">
           <value>
             <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf-1.3.2/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf-1.3.1/lib" />
             </list>
           </value>
@@ -236,6 +239,7 @@
         <entry key="source_span">
           <value>
             <list>
+              <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_span-1.9.1/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_span-1.9.0/lib" />
             </list>
           </value>
@@ -306,7 +310,6 @@
         <entry key="vm_service">
           <value>
             <list>
-              <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/vm_service-9.0.0/lib" />
               <option value="$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/vm_service-9.3.0/lib" />
             </list>
           </value>
@@ -350,7 +353,9 @@
     </properties>
     <CLASSES>
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-41.0.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/_fe_analyzer_shared-43.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/analyzer-4.2.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/analyzer-4.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/ansicolor-2.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/args-2.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/async-2.9.0/lib" />
@@ -377,12 +382,14 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/pool-1.5.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.1.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf-1.3.1/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf-1.3.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf_packages_handler-3.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf_static-1.1.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/shelf_web_socket-1.0.2/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_map_stack_trace-2.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_maps-0.10.10/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_span-1.9.0/lib" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/source_span-1.9.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/stream_channel-2.1.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/string_scanner-1.1.1/lib" />
@@ -392,7 +399,6 @@
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/test_core-0.4.16/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/typed_data-1.3.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/very_good_analysis-3.0.1/lib" />
-      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/vm_service-9.0.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/vm_service-9.3.0/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/watcher-1.0.1/lib" />
       <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/web_socket_channel-2.2.0/lib" />
