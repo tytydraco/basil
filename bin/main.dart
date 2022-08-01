@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:basil/basil.dart';
-import 'package:basil/utils/logging.dart';
+import 'package:stdlog/stdlog.dart';
 import 'package:yamlcfg/yamlcfg.dart';
 
 Future<void> main(List<String> args) async {
@@ -68,7 +68,7 @@ Future<void> main(List<String> args) async {
       await basil.buildOnly(buildTypes);
     }
   } catch (e) {
-    error(e.toString());
+    error(e);
     exit(1);
   }
 }

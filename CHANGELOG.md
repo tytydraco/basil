@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Swap to stdlog logging
+
 ## 1.1.0+2
 
 * Convert LICENSE to 2-Clause BSD
