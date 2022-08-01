@@ -62,12 +62,11 @@ basil:
 
 ## Usage
 
-Once configured, you can start a build via: `dart run basil:main` if you installed it to your project, or just
-run `basil` if you installed it globally. This will process all the build steps in descending order.
+Once configured, you can start a build via: `dart run basil` if you installed it to your project, or just run `basil`
+if you installed it globally. This will process all the build steps in descending order.
 
-A specific configuration file can be specified using the `--config` or `-c` option. For
-example: `dart run basil:main -c custom.yaml` or `basil -c custom.yaml`.
+A specific configuration file can be specified using the `--config` or `-c` option. For example:
+`dart run basil -c custom.yaml` or `basil -c custom.yaml`.
 
-Build steps can also be specified individually: `dart run basil:main [type...]` or `basil [type...]`. For
-example: `dart run basil:main build cleanup` or `basil build cleanup` will execute exclusively the `build` step and
-the `cleanup` step.
+Build steps can also be specified individually: `dart run basil [type...]` or `basil [type...]`. For example:
+`dart run basil build cleanup` or `basil build cleanup` will execute exclusively the `build` step and the`cleanup` step.

@@ -1,6 +1,14 @@
+## 1.1.1+1
+
+* Name bin as package name
+
 ## 1.1.0+3
 
 * Undo dependency on stdlog
+
+## 1.1.1
+
+* Swap to stdlog
 
 ## 1.1.0+2
 
