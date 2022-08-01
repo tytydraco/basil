@@ -37,10 +37,10 @@ class Basil {
   );
 
   /// Run all build types in descending order from the configuration file.
-  Future<void> buildAll() => buildOnly(basilCfg.yamlMap.keys);
+  Future<void> buildAll() => buildOnly(basilCfg.yamlMap.keys.toList());
 
   /// Run some particular build types from the configuration file.
-  Future<void> buildOnly(Iterable<Object?> buildTypeKeys) async {
+  Future<void> buildOnly(List<Object?> buildTypeKeys) async {
     for (final buildTypeKey in buildTypeKeys) {
       final buildTypeCfg = basilCfg.into(
         buildTypeKey,
@@ -57,7 +57,8 @@ class Basil {
 
   /// Run commands for a specific [buildTypeCfg].
   Future<void> _runBuildType(YamlCfg buildTypeCfg) async {
-    final cmds = buildTypeCfg.get<YamlList>('cmds').map((e) => e.toString());
+    final cmds =
+        buildTypeCfg.get<YamlList>('cmds').map((e) => e.toString()).toList();
     final enabled = buildTypeCfg.get<bool>('enabled', () => true);
     final parallel = buildTypeCfg.get<bool>('parallel', () => false);
     final platforms = buildTypeCfg.get<YamlList?>('platforms', () => null);
@@ -98,7 +99,7 @@ class Basil {
 
   /// Execute the [commands] sequentially or in [parallel] if specified.
   Future<void> _runCommands(
-    Iterable<String> commands, {
+    List<String> commands, {
     bool parallel = false,
   }) async {
     if (parallel) {
