@@ -1,3 +1,7 @@
+## 1.1.0+3
+
+* Undo dependency on stdlog
+
 ## 1.1.0+2
 
 * Convert LICENSE to 2-Clause BSD
