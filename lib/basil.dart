@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:basil/utils/logging.dart';
 import 'package:io/io.dart';
-import 'package:stdlog/stdlog.dart';
 import 'package:yaml/yaml.dart';
 import 'package:yamlcfg/yamlcfg.dart';
 
@@ -50,7 +50,7 @@ class Basil {
         ),
       );
 
-      info('Running steps for: $buildTypeKey');
+      log('Running steps for: $buildTypeKey');
       await _runBuildType(buildTypeCfg);
     }
   }
@@ -76,7 +76,7 @@ class Basil {
   /// Execute a shell [command] and log the output.
   Future<void> _runCommand(String command) async {
     // Echo command to output first.
-    if (echo) info('Echo: $command');
+    if (echo) echoCommand(command);
 
     final shellParts = shellSplit(command);
     final executable = shellParts[0];
