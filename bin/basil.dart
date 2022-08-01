@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 import 'package:basil/basil.dart';
-import 'package:basil/utils/logging.dart';
+import 'package:basil/src/utils/logging.dart';
 import 'package:yamlcfg/yamlcfg.dart';
 
 Future<void> main(List<String> args) async {

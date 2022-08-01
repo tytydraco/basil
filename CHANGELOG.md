@@ -1,3 +1,7 @@
+## 1.1.1+2
+
+* Improve package structure
+
 ## 1.1.1+1
 
 * Name bin as package name
