@@ -1,6 +1,7 @@
 ## 1.1.2
 
 * Do not expose as library
+* Use basil.yaml by default
 
 ## 1.1.1+2
 

@@ -24,7 +24,7 @@ Future<void> main(List<String> args) async {
       'config',
       help: 'The path to the configuration file to process.',
       abbr: 'c',
-      defaultsTo: 'pubspec.yaml',
+      defaultsTo: 'basil.yaml',
     )
     ..addFlag(
       'echo',
