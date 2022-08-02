@@ -12,7 +12,7 @@ A linear build system for Dart projects, designed to be lightweight and extensib
 
 ## Details
 
-Basil parses a YAML file (by default, the project `pubspec.yaml` file) and looks for a top-level field named `basil`.
+Basil parses a YAML file (by default, the project `basil.yaml` file) and looks for a top-level field named `basil`.
 Other fields under the `basil` tag are called build types. Each build type must specify a field named `cmds` containing
 a list of shell commands. Build types are executed in descending order, by default. Build types can be also specified
 manually.
@@ -37,7 +37,7 @@ dart pub global activate basil
 
 ## Configuration
 
-The configuration for basil lives in the root `pubspec.yaml` file by default. The format is as follows:
+The configuration for basil lives in the root `basil.yaml` file by default. The format is as follows:
 
 ```yaml
 # Main basil tag specifying ordered build tags.
