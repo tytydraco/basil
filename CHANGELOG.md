@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Do not expose as library
+
 ## 1.1.1+2
 
 * Improve package structure

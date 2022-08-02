@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:basil/basil.dart';
+import 'package:basil/src/basil.dart';
 import 'package:basil/src/utils/logging.dart';
 import 'package:yamlcfg/yamlcfg.dart';
 

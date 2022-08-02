@@ -12,8 +12,6 @@ environment:
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.16.0
-  basil:
-    path: ../
 
 # Example basil configuration to format, compile, execute, and clean up a dart project and its
 # executables. Supports Windows, Linux, and MacOS.

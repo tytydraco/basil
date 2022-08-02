@@ -1,4 +1,4 @@
-import 'package:basil/basil.dart';
+import 'package:basil/src/basil.dart';
 import 'package:test/test.dart';
 import 'package:yaml/yaml.dart';
 import 'package:yamlcfg/yamlcfg.dart';
