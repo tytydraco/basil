@@ -2,6 +2,7 @@
 
 * Do not expose as library
 * Use basil.yaml by default
+* Remove example
 
 ## 1.1.1+2
 
