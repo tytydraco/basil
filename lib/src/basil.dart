@@ -58,7 +58,7 @@ class Basil {
   /// Run commands for a specific [buildTypeCfg].
   Future<void> _runBuildType(YamlCfg buildTypeCfg) async {
     final cmds =
-        buildTypeCfg.get<YamlList>('cmds').map((e) => e.toString()).toList();
+        List.castFrom<dynamic, String>(buildTypeCfg.get<YamlList>('cmds'));
     final enabled = buildTypeCfg.get<bool>('enabled', () => true);
     final parallel = buildTypeCfg.get<bool>('parallel', () => false);
     final platforms = buildTypeCfg.get<YamlList?>('platforms', () => null);
