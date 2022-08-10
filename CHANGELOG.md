@@ -1,3 +1,7 @@
+## 1.1.3
+
+* Swap to stdlog
+
 ## 1.1.2
 
 * Do not expose as library
